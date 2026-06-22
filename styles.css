@@ -1,21 +1,39 @@
 h1 {
-    color: blue;
+    color: rgb(53, 240, 6);
     font-size: 2em;
     text-align: center;
 }
+div {
+    color: rgb(240, 100, 6);
+    text-align: center;
+}
+/* naredi body kontejner za absolutno pozicioniranje pseudo-elementa */
+body {
+    position: relative;
+}
+/* dodatna slika pod prvo */
 /* div.glavnastran{ */
 body::after {
-     content: "";
-     position: fixed;
-     top: 0;
-     left: 0;
-     width: 100%;
-     height: 100%;    
-    background-image: url('rutice.webp');
-    opacity:0.4;
-    z-index: -1; /* postavi ozadje za vsebino */
-    pointer-events: none; /* omogoči klik/hover na elemente nad njim */
-}   
+    content: "";
+    position: absolute; /* premika se z vsebino strani */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('bipi.jfif');
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: cover;
+    opacity: 0.25; /* prosojnost */
+    z-index: 0; /* za vsebino (body > * ima z-index:1) */
+    pointer-events: none;
+}
+
+/* zagotovi, da je dejanska vsebina nad pseudo-ozadjem */
+body > * {
+    position: relative;
+    z-index: 1;
+}
 
 /* skrij besedilo dokler uporabnik ne prileti z miško */
 p.skrivnost {
